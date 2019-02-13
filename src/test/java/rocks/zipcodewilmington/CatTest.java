@@ -40,4 +40,20 @@ public class CatTest {
         Assert.assertEquals(givenId, retrievedId);
     }
 
+
+
+    @Test
+    public void setNameTest() {
+        //Given
+        Cat  cat = new Cat("Davis",new Date(25),45);
+        String expectedName = "Daivs";
+
+        //When
+        cat.setName(expectedName);
+        String actualName = cat.getName();
+
+        //Then
+        Assert.assertEquals(expectedName, actualName);
+    }
 }
+
