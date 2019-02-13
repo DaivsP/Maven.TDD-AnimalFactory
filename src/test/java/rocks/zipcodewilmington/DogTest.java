@@ -3,7 +3,9 @@ package rocks.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -40,16 +42,85 @@ public class DogTest {
     }
 
     @Test
-    public void newDogTest(){
+    public void speakTest(){
         //Given
         //Dog already exists
+        String expected = "bark!";
 
         //When
-        String actualName = dog.getName();
-        Date actualDate = dog.getBirthDate();
-        Integer actualId = dog.getId();
+        dog.speak();
 
         //Then
-        Assert.assertEquals();
+        Assert.assertEquals(expected, dog.speak());
     }
+
+    @Test
+    public void setBirthdateTest(){
+        Date bday = new Date();
+        Date bday1 = new Date(1);
+
+        //Given
+        //Dog already exists
+        Date expected = bday;
+
+        //When
+        dog.setBirthDate(bday);
+
+        //Then
+        Assert.assertEquals(expected, dog.getBirthDate());
+    }
+
+    @Test
+    public void eatTest(){
+        //Given
+        //Dog already exists
+        Food food = new Food();
+        Integer numberOfMeals = 1;
+
+        //When
+        dog.eat(food);
+
+        //Then
+        Assert.assertEquals(numberOfMeals, dog.getNumberOfMealsEaten());
+    }
+
+    @Test
+    public void getIdTest(){
+        //Given
+        //Dog already exists
+        Integer expected = 45;
+
+        //When
+        dog.getId();
+
+        //Then
+        Assert.assertEquals(expected, dog.getId());
+    }
+
+    @Test
+    public void animalInheritanceTest(){
+        //Given
+        //Dog alreay exists
+        Boolean expected = true;
+
+        //When
+        Boolean actual = dog instanceof Animal;
+
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void mammalInheritanceTest(){
+        //Given
+        //Dog already exists
+        Boolean expected = true;
+
+        //When
+        Boolean actual = dog instanceof Mammal;
+
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+
 }
